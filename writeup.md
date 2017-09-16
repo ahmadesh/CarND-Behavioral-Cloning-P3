@@ -1,7 +1,5 @@
 # Behaviorial Cloning Project
 
-[![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
-
 Overview
 ---
 
@@ -20,13 +18,9 @@ The submission includes five files:
 
 Solution
 ---
-Network:
+I started with the LeNet architecture to train the model, but soon converted to the Nvidia's architecture which is the state of the art network for this purpose, [End to End Learning for Self-Driving Cars](http://images.nvidia.com/content/tegra/automotive/images/2016/solutions/pdf/end-to-end-dl-using-px.pdf). The model is proved to be effective in the previous works. They start with importing a YUV image and normalizing the image. Then the model follows three CNN layers to extract the features from the input image. Then the output is flattened and fed into four fully connected layers and output a signle value which is the steering angle. I also added Dropout layers after the fully connected layers to avoid overfitting.
 
-I started with the LeNet architecture, but soon converted to the Nvidia's architecture which is the state of the art network for this purpose, [End to End Learning for Self-Driving Cars](http://images.nvidia.com/content/tegra/automotive/images/2016/solutions/pdf/end-to-end-dl-using-px.pdf).
-
-The model is proved to be effective in the previous works. They start with importing a YUV image and normalizing the image. Then the model follows three CNN layers to extract the features from the input image. Then the output is flattened and fed into four fully connected layers and output a signle value which is the steering angle. 
-
-I also added Dropout layers after the fully connected layers to avoid overfitting.
+In the following, the methods I used to train this nwetwork using the simulator images are explained.
 
 Data collection
 ---
