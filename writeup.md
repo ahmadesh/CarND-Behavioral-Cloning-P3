@@ -35,7 +35,7 @@ The Udacity simulator provides a training section that captures and outputs the 
 
 Udacity's driving simulator provides two different test tracks, and all sample data was collected from track 1. The training data includes images from left, center and right and cameras on the front panel of the car (A sample of these traning images are shown bellow). 
 
-![]({{site.baseurl}}/./writeup-images/Sample_images.png)
+![(./writeup-images/Sample_images.png)]
 
 Data Augmentation and Preprocessing
 ---
@@ -44,7 +44,8 @@ In the training data, there is only one steering angle provided for these left/c
 The input to the model as stated in the paper, should be a 66x200 pixels image with YUV layers. The original images from training have 160x320 size in RGB. Therefore, I crop the top 40 pixels and bottom 20 pixels of the input image which gives 100x320 pizels. I then resize the image to the desired 66x200 pixels. I also added a function that randomly changes the brightness of the images. Useing this function allows generalizing the model for different lighting conditions. I eventually convert the image to YUV layers using a CV2 function. This processed image is fed to the netwerk for training. Samples of the original images and the processed versions are shown here.
 
 Original images:
-![]({{site.baseurl}}/./writeup-images/Sample_images.png)
+
+<img src="writeup-images/Sample_images.png" width="800" alt="Combined Image"/>
 
 Processed images:
 ![]({{site.baseurl}}/./writeup-images/processed_images.png)
