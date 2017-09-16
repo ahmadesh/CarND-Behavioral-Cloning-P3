@@ -35,7 +35,8 @@ The Udacity simulator provides a training section that captures and outputs the 
 
 Udacity's driving simulator provides two different test tracks, and all sample data was collected from track 1. The training data includes images from left, center and right and cameras on the front panel of the car (A sample of these traning images are shown bellow). 
 
-![(./writeup-images/Sample_images.png)]
+<img src="writeup-images/Sample_images.png" width="800" alt="Combined Image"/>
+
 
 Data Augmentation and Preprocessing
 ---
@@ -48,13 +49,15 @@ Original images:
 <img src="writeup-images/Sample_images.png" width="800" alt="Combined Image"/>
 
 Processed images:
-![]({{site.baseurl}}/./writeup-images/processed_images.png)
+<img src="writeup-images/processed_images.png" width="800" alt="Combined Image"/>
+
 
 ### Network architecture
 
 The Nvidia architecter model, as shown in the image, consist of 9 layers including a normalization layer, 5 convolution layers, and 3 fully connected layers. The image is fed with size 66x200x3 and the in the normalization layer the data are mapped into -1.0 to 1.0 range. The first convolution layer has 5x5 kernel and outputs 24@31x98. The second and third convolution layers have 5x5 kernel resulting in 36@14x47 and 48@5x22 respectively. The forth and fifth convolution layer have 3x3 kernel that output 64@3x20 and 64@1x18 respectively. Then the outputs are flatten resulting in 1164 nodes that are fed into three fully connected layers with 100, 50, 10 nodes and output into 1 node which is the steering angle. I also used dropout layers between the fully connected layers to avoid overfitting. The weights of the model are trained by minimizing the mean squared error between the output and the training steering angle using 'Adam' optimizer. The details of the model are shown in the following image.
 
-![]({{site.baseurl}}/./writeup-images/network.png)
+<img src="writeup-images/network.png" height="800" alt="Combined Image"/>
+
 
 ## Training   
 I used a batch generator function to provide the batches to the fitting function. For each batch, the function takes 32 sample lines that contains left, center, and right images. For the left and right images the steering angle was corrected by a constant (0.25). Also in order to augment the data and also balance the steering angle values in the data, each image was flipped and steering angle was multiplied by -1. Therefore, each line of the data is augmented to 6 samples. Also, in order to avoid bias toward 0 steering angle, the number of sample images with 0 degree steering angle was limited to half of the samples. The rest of the 0 steering angle samples were replaced by a random non-zero steering angle image from the data. 
