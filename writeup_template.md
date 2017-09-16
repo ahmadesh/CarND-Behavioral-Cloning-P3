@@ -56,9 +56,9 @@ The Nvidia architecter model, as shown in the image, consist of 9 layers includi
 ![]({{site.baseurl}}/./writeup-images/Network.png)
 
 ## Training   
-I used a batch generator function to provide the batches to the fitting function. For each batch, the function takes 32 sample lines that contains left, center, and right images. For the left and right images the steering angle was corrected by a constant (0.25). Also in order to augment the data and also balance the steering angle values in the data, each iamges was flipped and steering angle was multiplied by -1.    
+I used a batch generator function to provide the batches to the fitting function. For each batch, the function takes 32 sample lines that contains left, center, and right images. For the left and right images the steering angle was corrected by a constant (0.25). Also in order to augment the data and also balance the steering angle values in the data, each iamges was flipped and steering angle was multiplied by -1. Therefore each line of the data is augmented to 6 samples. Also, in order to avoid bias toward 0 steering angle, the number of sample images with 0 degree steering angle was limited to half of the samples. The rest of the 0 steering angle samples were replaced by a random non-zero steering angle image from the data. 
 
-For training the model 20 epochs are used for the minimum loss function. The training loss and validation loss were close and decreesing during the training, showing no overfitting in the model.  
+The total samples in the data are 4846*6 = 29076 that is splitted into 80% training and 20% validation set. For training the model 20 epochs are used to achieve the minimum loss function. The training loss and validation loss were close and decreesing during the training, showing no overfitting in the model. 
 
 ##  Autonomous driving evaluation
 The trained model was used to drive the car in track 1 in autonomous mode. The rusulting video can be found at [Movie.mp4](./Movie.mp4). The model could drive the car around the track safely. However at parts of the road the car moves toward the side and then turns back to the middle. 
