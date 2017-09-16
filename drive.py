@@ -26,7 +26,6 @@ prev_image_array = None
 def preprocess(img):
     # original shape: 160x320x3, input shape for neural net: 66x200x3
     new_img = img[50:140,:,:]
-        
     # scale to 66x200x3 (same as nVidia)
     new_img = cv2.resize(new_img,(200, 66), interpolation = cv2.INTER_AREA)
     # convert to YUV color space (as nVidia paper suggests)
@@ -55,7 +54,7 @@ class SimplePIController:
 
 
 controller = SimplePIController(0.1, 0.002)
-set_speed = 20
+set_speed = 15
 controller.set_desired(set_speed)
 
 
